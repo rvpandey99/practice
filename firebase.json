@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "maqshine",
+    "public": "dist/tn-blog",
     "ignore": [
       "firebase.json",
       "**/.*",

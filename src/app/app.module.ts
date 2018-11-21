@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ import { LifeComponent } from './categories/life/life.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateBlogComponent } from './admin/create-blog/create-blog.component';
 import { SelectedBlogComponent } from './selected-blog/selected-blog.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SelectedBlogComponent } from './selected-blog/selected-blog.component';
     SidebarComponent,
     CreateBlogComponent,
     SelectedBlogComponent,
-    LoginComponent
+    LoginComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { SelectedBlogComponent } from './selected-blog/selected-blog.component';
       {path: 'beauty', component: BeautyComponent},
       {path: 'fashion', component: FashionComponent},
       {path: 'life', component: LifeComponent},
+      {path: 'about-us', component: AboutUsComponent},
       {path: 'login', component: LoginComponent},
       {path: 'admin', component: DashbordComponent},
       {path: 'admin/create', component: CreateBlogComponent}
