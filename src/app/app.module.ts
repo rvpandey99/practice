@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CreateBlogComponent } from './admin/create-blog/create-blog.component';
 import { SelectedBlogComponent } from './selected-blog/selected-blog.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
@@ -50,11 +55,15 @@ import { AboutUsComponent } from './about-us/about-us.component';
       {path: 'life', component: LifeComponent},
       {path: 'about-us', component: AboutUsComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'admin', component: DashbordComponent},
+      {path: 'admin', component: DashbordComponent, canActivate: [AuthGuardService]},
       {path: 'admin/create', component: CreateBlogComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
